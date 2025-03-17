@@ -13,7 +13,7 @@ from collections.abc import Sequence
 import numpy as np
 
 from alphafold3.cpp import cif_dict
-from alphafold3.structure.python import mmcif_layout
+from alphafold3.structure.cpp import mmcif_layout
 
 
 def filter(
