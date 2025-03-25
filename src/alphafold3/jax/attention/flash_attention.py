@@ -22,8 +22,8 @@ import jax.numpy as jnp
 import jax_triton as jt
 import jaxtyping
 from jaxtyping import Array, Bool, Float, Int  # pylint: disable=g-multiple-import,g-importing-member
-import triton
-import triton.language as tl
+import triton  # type: ignore
+import triton.language as tl # type: ignore
 import typeguard
 
 

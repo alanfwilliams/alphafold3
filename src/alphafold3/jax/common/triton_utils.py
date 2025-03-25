@@ -15,8 +15,8 @@ from collections.abc import Callable, Mapping
 from alphafold3.jax.common import precision as precision_lib
 import jax
 import jax.numpy as jnp
-import triton
-import triton.language as tl
+import triton # type: ignore
+import triton.language as tl # type: ignore
 
 
 _JNP_TO_TL_DTYPES: Mapping[jnp.dtype, tl.dtype] = {

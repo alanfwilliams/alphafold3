@@ -22,12 +22,12 @@ requires that the host machine has CUDA 12.6 installed.
 
 The instructions provided below describe how to:
 
-1.  Provision a machine on GCP.
-1.  Install Docker.
-1.  Install NVIDIA drivers for an A100.
-1.  Obtain genetic databases.
-1.  Obtain model parameters.
-1.  Build the AlphaFold 3 Docker container or Singularity image.
+1. Provision a machine on GCP.
+1. Install Docker.
+1. Install NVIDIA drivers for an A100.
+1. Obtain genetic databases.
+1. Obtain model parameters.
+1. Build the AlphaFold 3 Docker container or Singularity image.
 
 ## Provisioning a Machine
 
@@ -36,9 +36,9 @@ platforms.
 
 Using an existing Google Cloud project, we provisioned a new machine:
 
-*   We recommend using `--machine-type a2-ultragpu-1g` but feel free to use
+* We recommend using `--machine-type a2-ultragpu-1g` but feel free to use
     `--machine-type a2-highgpu-1g` for smaller predictions.
-*   If desired, replace `--zone us-central1-a` with a zone that has quota for
+* If desired, replace `--zone us-central1-a` with a zone that has quota for
     the machine you have selected. See
     [gpu-regions-zones](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).
 
@@ -195,15 +195,15 @@ Debian-based systems install them by running `sudo apt install wget zstd`.
 
 AlphaFold 3 needs multiple genetic (sequence) protein and RNA databases to run:
 
-*   [BFD small](https://bfd.mmseqs.com/)
-*   [MGnify](https://www.ebi.ac.uk/metagenomics/)
-*   [PDB](https://www.rcsb.org/) (structures in the mmCIF format)
-*   [PDB seqres](https://www.rcsb.org/)
-*   [UniProt](https://www.uniprot.org/uniprot/)
-*   [UniRef90](https://www.uniprot.org/help/uniref)
-*   [NT](https://www.ncbi.nlm.nih.gov/nucleotide/)
-*   [RFam](https://rfam.org/)
-*   [RNACentral](https://rnacentral.org/)
+* [BFD small](https://bfd.mmseqs.com/)
+* [MGnify](https://www.ebi.ac.uk/metagenomics/)
+* [PDB](https://www.rcsb.org/) (structures in the mmCIF format)
+* [PDB seqres](https://www.rcsb.org/)
+* [UniProt](https://www.uniprot.org/uniprot/)
+* [UniRef90](https://www.uniprot.org/help/uniref)
+* [NT](https://www.ncbi.nlm.nih.gov/nucleotide/)
+* [RFam](https://rfam.org/)
+* [RNACentral](https://rnacentral.org/)
 
 We provide a bash script `fetch_databases.sh` that can be used to download and
 set up all of these databases. This process takes around 45 minutes when not
@@ -252,11 +252,11 @@ uniref90_2022_05.fa
 Optionally, after the script finishes, you may want copy databases to an SSD.
 You can use theses two scripts:
 
-*   `src/scripts/gcp_mount_ssd.sh [<SSD_MOUNT_PATH>]` Mounts and formats an
+* `src/scripts/gcp_mount_ssd.sh [<SSD_MOUNT_PATH>]` Mounts and formats an
     unmounted GCP SSD drive to the specified path. It will skip the either step
     if the disk is either already formatted or already mounted. The default
     `<SSD_MOUNT_PATH>` is `/mnt/disks/ssd`.
-*   `src/scripts/copy_to_ssd.sh [<DB_DIR>] [<SSD_DB_DIR>]` this will copy as
+* `src/scripts/copy_to_ssd.sh [<DB_DIR>] [<SSD_DB_DIR>]` this will copy as
     many files that it can fit on to the SSD. The default `<DB_DIR>` is
     `$HOME/public_databases`, and must match the path used in the
     `fetch_databases.sh` command above, and the default `<SSD_DB_DIR>` is
@@ -347,7 +347,7 @@ docker run -it \
 If you get an error like the following, make sure the models and data are in the
 paths (flags named `--volume` above) in the correct locations.
 
-```
+```sh
 docker: Error response from daemon: error while creating mount source path '/srv/alphafold3_data/models': mkdir /srv/alphafold3_data/models: permission denied.
 ```
 
